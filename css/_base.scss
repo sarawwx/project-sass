@@ -1,0 +1,62 @@
+$text-color: rgb(0, 0, 0);
+$colors: pink, blue, purple;
+
+.flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+body {
+    @extend .flex;
+    flex-direction: column;
+    background-color: rgb(205, 129, 255);
+    color: $text-color;
+    height: 100%;
+    text-align: center;
+    p {
+        cursor: pointer;
+        &:hover {
+            color: rgb(134, 13, 190);
+        }
+    }
+    h2 {
+        font-size: 40px;
+        color: rgb(134, 13, 190);
+    }
+}
+
+@each $color in $colors {
+    .#{$color}-text { color: $color; }  
+}
+
+@for $i from 1 through 5 {
+    .text-#{$i} {
+        font-size: 15px * $i
+    }
+}
+
+@mixin make-bold($bool) {
+    @if $bool == true {
+        font-weight: bold;
+    }
+}
+
+// @mixin box-shadow() {
+//     box-shadow: 3px 3px 4px 1px rgba($text-color, 0.6);
+// }
+
+// .palette {
+//     @include box-shadow(rgb(238, 101, 250));
+//     width: 200px;
+//     height: 200px;
+//     background-color: white;
+//     h2 {
+//         @include box-shadow(rgb(238, 101, 250));
+//         @include make-bold(true);
+//         background-color: rgb(2, 153, 133);
+//         height: 140px;
+//         width: 140px;
+//         color: $text-color;
+//     }
+// }
